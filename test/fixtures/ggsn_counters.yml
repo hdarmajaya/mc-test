@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  filename: MyString
+  calltime: 2013-11-27 21:07:13
+  records_in: 1
+  records_out: 1
+  malformed_data: 1
+  missing_data: 1
+  zero_value: 1
+  min_too_low: 1
+
+two:
+  filename: MyString
+  calltime: 2013-11-27 21:07:13
+  records_in: 1
+  records_out: 1
+  malformed_data: 1
+  missing_data: 1
+  zero_value: 1
+  min_too_low: 1
