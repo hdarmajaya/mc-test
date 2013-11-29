@@ -12,8 +12,7 @@ module DashboardHelper
 
       Date.parse(date).beginning_of_week
     else
-      #DateTime.now.beginning_of_week
-      (DateTime.now-7).beginning_of_week
+      DateTime.now.beginning_of_week
     end
   end
 
