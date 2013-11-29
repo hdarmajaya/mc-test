@@ -5,7 +5,7 @@
       <h2>Mediation Counters</h2>
       <br />
       <%= form_tag(dashboard_index_path, method: "get") do %>
-        <%= label_tag("Start date:") %>
+        <%= label_tag("Date:") %>
         <%= text_field_tag :start_date %>
         <%= submit_tag "Search", :class => "btn btn-primary btn-sm" %>
       <% end %><br />
@@ -65,12 +65,12 @@
                           <% hourly_data.each do |hc| %>
                           <tr>
                             <td><%= hc.hour %></td>
-                            <td><%= number_with_delimiter(hc.sum_records_in, :delimiter => ',') %></td>
-                            <td><%= number_with_delimiter(hc.sum_records_out, :delimiter => ',') %></td>
-                            <td><%= number_with_delimiter(hc.sum_malformed_data, :delimiter => ',') %></td>
-                            <td><%= number_with_delimiter(hc.sum_missing_data, :delimiter => ',') %></td>
-                            <td><%= number_with_delimiter(hc.sum_zero_value, :delimiter => ',') %></td>
-                            <td><%= number_with_delimiter(hc.sum_min_too_low, :delimiter => ',') %></td>
+                            <td><%= number_with_delimiter(hc.sum_records_in, :delimiter => ",") %></td>
+                            <td><%= number_with_delimiter(hc.sum_records_out, :delimiter => ",") %></td>
+                            <td><%= number_with_delimiter(hc.sum_malformed_data, :delimiter => ",") %></td>
+                            <td><%= number_with_delimiter(hc.sum_missing_data, :delimiter => ",") %></td>
+                            <td><%= number_with_delimiter(hc.sum_zero_value, :delimiter => ",") %></td>
+                            <td><%= number_with_delimiter(hc.sum_min_too_low, :delimiter => ",") %></td>
                           </tr>
                           <% end %>
                         </tbody>
@@ -82,7 +82,7 @@
                   </div> <!-- /.modal-content -->
                 </div> <!-- /.modal-dialog -->
               </div> <!-- /.modal fade -->
-              <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#<%= dc.calldate %>-filename">Filename</button>
+              <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#<%= dc.calldate %>-filename">File</button>
               <div class="modal fade" id="<%= dc.calldate %>-filename" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
                   <div class="modal-content">
@@ -110,12 +110,12 @@
                           <tr>
                             <td><%= fc.hour %></td>
                             <td><%= fc.file %></td>
-                            <td><%= number_with_delimiter(fc.sum_records_in, :delimiter => ',') %></td>
-                            <td><%= number_with_delimiter(fc.sum_records_out, :delimiter => ',') %></td>
-                            <td><%= number_with_delimiter(fc.sum_malformed_data, :delimiter => ',') %></td>
-                            <td><%= number_with_delimiter(fc.sum_missing_data, :delimiter => ',') %></td>
-                            <td><%= number_with_delimiter(fc.sum_zero_value, :delimiter => ',') %></td>
-                            <td><%= number_with_delimiter(fc.sum_min_too_low, :delimiter => ',') %></td>
+                            <td><%= number_with_delimiter(fc.sum_records_in, :delimiter => ",") %></td>
+                            <td><%= number_with_delimiter(fc.sum_records_out, :delimiter => ",") %></td>
+                            <td><%= number_with_delimiter(fc.sum_malformed_data, :delimiter => ",") %></td>
+                            <td><%= number_with_delimiter(fc.sum_missing_data, :delimiter => ",") %></td>
+                            <td><%= number_with_delimiter(fc.sum_zero_value, :delimiter => ",") %></td>
+                            <td><%= number_with_delimiter(fc.sum_min_too_low, :delimiter => ",") %></td>
                           </tr>
                           <% end %>
                         </tbody>
@@ -130,12 +130,12 @@
               </center>
             </td>
             <td><%= display_date(dc.calldate) %></td>
-            <td><%= number_with_delimiter(dc.sum_records_in, :delimiter => ',') %></td>
-            <td><%= number_with_delimiter(dc.sum_records_out, :delimiter => ',') %></td>
-            <td><%= number_with_delimiter(dc.sum_malformed_data, :delimiter => ',') %></td>
-            <td><%= number_with_delimiter(dc.sum_missing_data, :delimiter => ',') %></td>
-            <td><%= number_with_delimiter(dc.sum_zero_value, :delimiter => ',') %></td>
-            <td><%= number_with_delimiter(dc.sum_min_too_low, :delimiter => ',') %></td>
+            <td><%= number_with_delimiter(dc.sum_records_in, :delimiter => ",") %></td>
+            <td><%= number_with_delimiter(dc.sum_records_out, :delimiter => ",") %></td>
+            <td><%= number_with_delimiter(dc.sum_malformed_data, :delimiter => ",") %></td>
+            <td><%= number_with_delimiter(dc.sum_missing_data, :delimiter => ",") %></td>
+            <td><%= number_with_delimiter(dc.sum_zero_value, :delimiter => ",") %></td>
+            <td><%= number_with_delimiter(dc.sum_min_too_low, :delimiter => ",") %></td>
             <!-- create the hourly modal -->
           </tr>
           <!-- /hourly modal -->
@@ -143,7 +143,7 @@
           <% end %> <!-- daily_counters.each -->
         </tbody>
       </table>
-    </div>
+      </div>
     <div class="col-md-1"></div>
   </div> <!-- /row -->
 </div> <!-- /container -->
