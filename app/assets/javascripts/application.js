@@ -12,11 +12,6 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require_tree .
-//
-// Loads all Bootstrap javascripts
 //= require bootstrap
-//= require bootstrap-datepicker
-$(function () {
-  $('#start_date').datepicker({ dateFormat: 'yy-mm-dd' });
-});
+//= require bootstrap-datepicker/core
+//= require_tree .

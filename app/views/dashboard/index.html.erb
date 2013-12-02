@@ -6,7 +6,7 @@
       <br />
       <%= form_tag(dashboard_index_path, method: "get") do %>
         <%= label_tag("Date:") %>
-        <%= text_field_tag :start_date %>
+        <%= text_field_tag :start_date, nil, 'data-date-format' => 'yyyy/mm/dd' %>
         <%= submit_tag "Search", :class => "btn btn-primary btn-sm" %>
       <% end %><br />
       <% if flash[:error] -%>
