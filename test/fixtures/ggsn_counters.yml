@@ -1,3 +1,20 @@
+# == Schema Information
+#
+# Table name: ggsn_counters
+#
+#  id             :integer          not null, primary key
+#  filename       :string(255)
+#  calltime       :datetime
+#  records_in     :integer
+#  records_out    :integer
+#  malformed_data :integer
+#  missing_data   :integer
+#  zero_value     :integer
+#  min_too_low    :integer
+#  created_at     :datetime         not null
+#  updated_at     :datetime         not null
+#
+
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
