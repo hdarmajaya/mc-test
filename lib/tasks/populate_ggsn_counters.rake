@@ -14,16 +14,17 @@ namespace :db do
     # Delete data
     GgsnCounter.delete_all
 
-    start_date = Date.today.beginning_of_year
+    #start_date = Date.today.beginning_of_year
+    start_date = Date.today - 100
     end_date = Date.today
 
     (start_date..end_date).each do |date|
       puts date
       (0..23).each do |hour|
-        filename = random_filename
         calltime = DateTime.new(date.year, date.month, date.day, hour)
 
         (1..rand(5)).each do |record|
+          filename = random_filename
           out_count = random_count
           mal_count = random_count
           mis_count = random_count

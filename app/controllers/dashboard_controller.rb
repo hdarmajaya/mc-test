@@ -2,7 +2,15 @@ class DashboardController < ApplicationController
   include DashboardHelper
 
   def index
-    @date = get_beginning_of_week(params[:start_date])
+    begin
+      @date = get_beginning_of_week(params[:start_date])
+    rescue
+      flash[:error] = "Invalid date"
+      redirect_to(:action => 'index')
+      return
+    end
+
+    #@date = get_beginning_of_week(params[:start_date])
     @current_week = @date.strftime("%U").to_i
     @daily_counters = get_counters_by_day(@date, @date.end_of_week)
     @hourly_counters = get_counters_by_hour(@date, @date.end_of_week)
