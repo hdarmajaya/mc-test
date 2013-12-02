@@ -18,4 +18,48 @@
 class GgsnCounter < ActiveRecord::Base
   attr_accessible :calltime, :filename, :malformed_data, :min_too_low, 
     :missing_data, :records_in, :records_out, :zero_value
+
+
+  def self.by_day(from, to)
+    select("date(calltime) as calldate,
+            sum(records_in) as sum_records_in,
+            sum(records_out) as sum_records_out,
+            sum(malformed_data) as sum_malformed_data,
+            sum(missing_data) as sum_missing_data,
+            sum(zero_value) as sum_zero_value,
+            sum(min_too_low) as sum_min_too_low")
+    .where(calltime: (from..to+1))
+    .group("date(calltime)")
+    .order("date(calltime)")
+  end
+
+  def self.by_hour(from, to)
+    select("date(calltime) as calldate,
+             strftime('%H', calltime) as hour,
+             sum(records_in) as sum_records_in,
+             sum(records_out) as sum_records_out,
+             sum(malformed_data) as sum_malformed_data,
+             sum(missing_data) as sum_missing_data,
+             sum(zero_value) as sum_zero_value,
+             sum(min_too_low) as sum_min_too_low")
+    .where(calltime: (from..to+1))
+    .group("date(calltime)", "strftime('%H', calltime)")
+    .order("date(calltime)", "strftime('%H', calltime)")
+  end
+
+  def self.by_file(from, to)
+    select("date(calltime) as calldate,
+             strftime('%H', calltime) as hour,
+             filename as file,
+             sum(records_in) as sum_records_in,
+             sum(records_out) as sum_records_out,
+             sum(malformed_data) as sum_malformed_data,
+             sum(missing_data) as sum_missing_data,
+             sum(zero_value) as sum_zero_value,
+             sum(min_too_low) as sum_min_too_low")
+    .where(calltime: (from..to+1))
+    .group("date(calltime)", "strftime('%H', calltime)", :filename)
+    .order("date(calltime)", "strftime('%H', calltime)", :filename)
+  end
+
 end
