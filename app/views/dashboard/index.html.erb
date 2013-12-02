@@ -9,8 +9,8 @@
         <%= text_field_tag :start_date, nil, 'data-date-format' => 'yyyy/mm/dd' %>
         <%= submit_tag "Search", :class => "btn btn-primary btn-sm" %>
       <% end %><br />
-      <% if flash[:error] -%>
-        <p class='error'><%=h flash[:error] %></p>
+      <% if flash[:notice] -%>
+        <p class='notice'><%=h flash[:notice] %></p>
       <% end -%>
 
       <table class="table table-striped table-rounded table-bordered">

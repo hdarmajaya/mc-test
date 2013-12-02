@@ -7,7 +7,7 @@ class DashboardController < ApplicationController
         Date.parse(params[:start_date]).beginning_of_week : 
         DateTime.now.beginning_of_week
     rescue
-      flash[:error] = "Invalid date"
+      flash[:notice] = "Invalid date. Defaulting to current week."
       redirect_to(:action => 'index')
       return
     end
