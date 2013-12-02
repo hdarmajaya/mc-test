@@ -3,11 +3,14 @@ class DashboardController < ApplicationController
 
   def index
     begin
-      @date = params[:start_date] ? 
-        Date.parse(params[:start_date]).beginning_of_week : 
-        DateTime.now.beginning_of_week
+      if params[:start_date].blank?
+        @date = DateTime.now.beginning_of_week
+        #flash[:notice] = "Blank date. Defaulting to current week."
+      else
+        @date = Date.parse(params[:start_date]).beginning_of_week
+      end
     rescue
-      flash[:notice] = "Invalid date. Defaulting to current week."
+      flash[:error] = "Invalid date. Defaulting to current week."
       redirect_to(:action => 'index')
       return
     end
