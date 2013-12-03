@@ -7,23 +7,8 @@
       <div><%= render "flash_message" %></div>
 
       <table class="table table-striped table-rounded table-bordered">
-        <thead>
-          <tr>
-            <th colspan="8">
-              <center>
-                <%= render "week_number" %>
-              </center>
-            </th>
-          </tr>
-          <tr>
-            <th></th>
-            <th>Day</th>
-            <%= render "header" %>
-          </tr>
-        </thead>
-        <tfoot>
-          <%= render "footer" %>
-        </tfoot>
+        <%= render "daily_header" %>
+        <%= render "footer" %>
         <tbody>
           <% @daily_counters.each do |dc| %>
           <tr>
@@ -39,12 +24,7 @@
                     </div>
                     <div class="modal-body">
                       <table class="table table-striped table-rounded table-bordered">
-                        <thead>
-                          <tr>
-                            <th>Hour</th>
-                            <%= render "header" %>
-                          </tr>
-                        </thead>
+                        <%= render "hourly_header" %>
                         <tbody>
                           <% hourly_data = get_hourly_count_by_date(dc.calldate) %>
                           <% hourly_data.each do |hc| %>
@@ -77,13 +57,7 @@
                     </div>
                     <div class="modal-body">
                       <table class="table table-striped table-rounded table-bordered">
-                        <thead>
-                          <tr>
-                            <th>Hour</th>
-                            <th>Filename</th>
-                            <%= render "header" %>
-                          </tr>
-                        </thead>
+                        <%= render "file_header" %>
                         <tbody>
                           <% file_data = get_hourly_count_by_file(dc.calldate) %>
                           <% file_data.each do |fc| %>
