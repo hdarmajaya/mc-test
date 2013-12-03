@@ -1,0 +1,5 @@
+<%= link_to "<<", :start_date => (@date.beginning_of_week-1) %>
+&nbsp &nbsp &nbsp
+Week # <%= @current_week %>
+&nbsp &nbsp &nbsp
+<%= link_to ">>", :start_date => (@date.end_of_week+1) %>

@@ -1,0 +1,10 @@
+<tr>
+  <td colspan="8">
+    <div style="float:left">
+      <%= link_to "Previous Week", :start_date => (@date.beginning_of_week-1) %>
+    </div>
+    <div style="float:right">
+      <%= link_to "Next Week", :start_date => (@date.end_of_week+1) %>
+    </div>
+  </td>
+</tr>
