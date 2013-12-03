@@ -14,6 +14,7 @@ group :assets do
   gem 'bootstrap-sass', '~> 3.0.2.0'
   gem 'bootstrap-datepicker-rails'
   gem 'coffee-rails', '~> 3.2.1'
+  gem 'font-awesome-rails'
 
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   gem 'therubyracer', :platforms => :ruby

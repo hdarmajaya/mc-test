@@ -2,11 +2,11 @@
   <thead>
     <tr>
       <th class="background" colspan="8">
-        <%= link_to "<<", :start_date => (@date.beginning_of_week-1) %>
+        <%= link_to (fa_icon "arrow-left"), :start_date => (@date.beginning_of_week-1) %>
         &nbsp &nbsp &nbsp
         Week # <%= @current_week %>
         &nbsp &nbsp &nbsp
-        <%= link_to ">>", :start_date => (@date.end_of_week+1) %>
+        <%= link_to (fa_icon "arrow-right"), :start_date => (@date.end_of_week+1) %>
       </th>
     </tr>
     <tr>
