@@ -21,7 +21,7 @@ class GgsnCounter < ActiveRecord::Base
 
   def self.terms_for(file)
     suggestions = where("filename like ?", "%#{file}%")
-    suggestions.order("filename").limit(10).pluck(:filename)
+    suggestions.order("filename desc").limit(10).pluck(:filename)
   end
 
   def self.by_day(from, to, filename)

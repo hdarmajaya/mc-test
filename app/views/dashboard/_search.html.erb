@@ -1,7 +1,7 @@
 <%= form_tag(dashboard_index_path, method: "get") do %>
   <%= label_tag("Date: ") %>
   <br>
-  <%= text_field_tag :start_date %>
+  <%= text_field_tag :start_date, nil, placeholder: 'Require' %>
   <br><br>
   <%= label_tag("Filename:") %>
   <br>

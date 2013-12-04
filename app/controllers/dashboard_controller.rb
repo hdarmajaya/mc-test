@@ -5,12 +5,12 @@ class DashboardController < ApplicationController
     begin
       if params[:start_date].blank?
         @date = DateTime.now.beginning_of_week
-        #flash[:notice] = "Blank date. Defaulting to current week."
+        flash.now[:notice] = "Default to current week."
       else
         @date = Date.parse(params[:start_date]).beginning_of_week
       end
     rescue
-      flash[:error] = "Invalid date. Defaulting to current week."
+      flash[:error] = "Invalid date."
       redirect_to(:action => 'index')
       return
     end
