@@ -19,8 +19,8 @@ class GgsnCounter < ActiveRecord::Base
   attr_accessible :calltime, :filename, :malformed_data, :min_too_low, 
     :missing_data, :records_in, :records_out, :zero_value
 
-  def self.terms_for(prefix)
-    suggestions = where("filename like ?", "%#{prefix}%")
+  def self.terms_for(file)
+    suggestions = where("filename like ?", "%#{file}%")
     suggestions.order("filename").limit(10).pluck(:filename)
   end
 
