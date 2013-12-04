@@ -24,7 +24,7 @@ class GgsnCounter < ActiveRecord::Base
     suggestions.order("filename").limit(10).pluck(:filename)
   end
 
-  def self.by_day(from, to)
+  def self.by_day(from, to, filename)
     select("date(calltime) as calldate,
             sum(records_in) as sum_records_in,
             sum(records_out) as sum_records_out,
@@ -33,11 +33,12 @@ class GgsnCounter < ActiveRecord::Base
             sum(zero_value) as sum_zero_value,
             sum(min_too_low) as sum_min_too_low")
     .where(calltime: (from..to+1))
+    .where("filename like ?", "%#{filename}%")
     .group("date(calltime)")
     .order("date(calltime)")
   end
 
-  def self.by_hour(from, to)
+  def self.by_hour(from, to, filename)
     select("date(calltime) as calldate,
             strftime('%H', calltime) as hour,
             sum(records_in) as sum_records_in,
@@ -47,11 +48,12 @@ class GgsnCounter < ActiveRecord::Base
             sum(zero_value) as sum_zero_value,
             sum(min_too_low) as sum_min_too_low")
     .where(calltime: (from..to+1))
+    .where("filename like ?", "%#{filename}%")
     .group("date(calltime)", "strftime('%H', calltime)")
     .order("date(calltime)", "strftime('%H', calltime)")
   end
 
-  def self.by_file(from, to)
+  def self.by_file(from, to, filename)
     select("date(calltime) as calldate,
             strftime('%H', calltime) as hour,
             filename as file,
@@ -62,6 +64,7 @@ class GgsnCounter < ActiveRecord::Base
             sum(zero_value) as sum_zero_value,
             sum(min_too_low) as sum_min_too_low")
     .where(calltime: (from..to+1))
+    .where("filename like ?", "%#{filename}%")
     .group("date(calltime)", "strftime('%H', calltime)", :filename)
     .order("date(calltime)", "strftime('%H', calltime)", :filename)
   end
