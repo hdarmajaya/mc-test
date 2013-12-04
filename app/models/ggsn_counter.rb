@@ -24,6 +24,10 @@ class GgsnCounter < ActiveRecord::Base
     suggestions.order("filename desc").limit(10).pluck(:filename)
   end
 
+  def self.get_date(file)
+    GgsnCounter.where(filename: file).limit(1).pluck(:calltime)
+  end
+
   def self.by_day(from, to, filename)
     select("date(calltime) as calldate,
             sum(records_in) as sum_records_in,
