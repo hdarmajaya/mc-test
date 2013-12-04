@@ -1,7 +1,7 @@
 <%= form_tag(dashboard_index_path, method: "get") do %>
   <%= label_tag("Date: ") %>
   <br>
-  <%= text_field_tag :start_date, nil, 'data-date-format' => 'yyyy/mm/dd' %>
+  <%= text_field_tag :start_date %>
   <br><br>
   <%= label_tag("Filename:") %>
   <br>
